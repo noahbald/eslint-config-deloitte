@@ -1,10 +1,14 @@
 module.exports = {
 	extends: [
 		'./rules/best-practices',
+		'./rules/errors',
 		'./rules/es6',
 		'./rules/imports',
+		'./rules/node',
+		'./rules/strict',
+		'./rules/style',
+		'./rules/variables',
 		'plugin:you-dont-need-lodash-underscore/all', //all rules set to error
-		//'plugin:new-with-error', //FIXME: Cant make this work ?? Why ??
 	],
 	parserOptions: {
 		ecmaVersion: 2017,

@@ -21,15 +21,15 @@
     "typescript"
   ],
   "engines": {
-    "node": ">= 10"
+    "node": ">= 12"
   },
   "author": "Deloitte Digital Australia (http://deloittedigital.com.au)",
   "license": "BSD-3-Clause",
   "dependencies": {
     "@deloitte-digital-au/eslint-config": "^3.4.2",
-    "@typescript-eslint/eslint-plugin": "^1.9.0",
-    "@typescript-eslint/parser": "^1.9.0",
-    "eslint": "^6.0.1"
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0"
   },
   "publishConfig": {
     "access": "public"

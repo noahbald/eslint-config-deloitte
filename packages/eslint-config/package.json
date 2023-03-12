@@ -19,14 +19,18 @@
     "styleguide"
   ],
   "engines": {
-    "node": ">= 4"
+    "node": ">= 12"
   },
   "author": "Deloitte Digital Australia (http://deloittedigital.com.au)",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "eslint": "^6.0.1",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-new-with-error": "^2.0.0",
+    "confusing-browser-globals": "^1.0.11",
+    "lerna": "^6.5.1"
+  },
+  "peerDependencies": {
+    "eslint": "^8.35.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-new-with-error": "^3.1.0",
     "eslint-plugin-you-dont-need-lodash-underscore": "^6.5.0"
   },
   "publishConfig": {

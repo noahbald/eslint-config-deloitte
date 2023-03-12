@@ -14,18 +14,21 @@ module.exports = {
 
 	rules: {
 		// enforces no braces where they can be omitted
-		// http://eslint.org/docs/rules/arrow-body-style
-		'arrow-body-style': 'off',
+		// https://eslint.org/docs/rules/arrow-body-style
+		'arrow-body-style': ['error', 'as-needed', {
+			requireReturnForObjectLiteral: false,
+		}],
 
 		// require parens in arrow function arguments
 		// http://eslint.org/docs/rules/arrow-parens
-		'arrow-parens': ['error', 'as-needed'],
+		'arrow-parens': ['error', 'always'],
 
 		// require space before/after arrow function's arrow
 		// http://eslint.org/docs/rules/arrow-spacing
 		'arrow-spacing': ['error', { before: true, after: true }],
 
 		// verify super() callings in constructors
+		// https://eslint.org/docs/latest/rules/constructor-super
 		'constructor-super': 'error',
 
 		// enforce the spacing around the * in generator functions
@@ -51,14 +54,24 @@ module.exports = {
 
 		// disallow importing from the same path more than once
 		// http://eslint.org/docs/rules/no-duplicate-imports
+		// replaced by https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
 		'no-duplicate-imports': 'error',
 
 		// disallow symbol constructor
 		// http://eslint.org/docs/rules/no-new-symbol
 		'no-new-symbol': 'error',
 
+		// Disallow specified names in exports
+		// https://eslint.org/docs/rules/no-restricted-exports
+		'no-restricted-exports': ['error', {
+			restrictedNamedExports: [
+				'default', // use `export default` to provide a default export
+				'then', // this will cause tons of confusion when your module is dynamically `import()`ed, and will break in most node ESM versions
+			],
+		}],
+
 		// disallow specific imports
-		// http://eslint.org/docs/rules/no-restricted-imports
+		// https://eslint.org/docs/rules/no-restricted-imports
 		'no-restricted-imports': 'off',
 
 		// disallow to use this/super before super() calling in constructors.
@@ -86,9 +99,10 @@ module.exports = {
 
 		// require method and property shorthand syntax for object literals
 		// http://eslint.org/docs/rules/object-shorthand
-		'object-shorthand': 'off',
+		'object-shorthand': ['error', 'always'],
 
 		// suggest using arrow functions as callbacks
+		// https://eslint.org/docs/latest/rules/prefer-arrow-callback
 		'prefer-arrow-callback': ['error', {
 			allowNamedFunctions: false,
 			allowUnboundThis: true,
@@ -100,38 +114,46 @@ module.exports = {
 			ignoreReadBeforeAssign: true,
 		}],
 
+		// Prefer destructuring from arrays and objects
+		// https://eslint.org/docs/rules/prefer-destructuring
+		'prefer-destructuring': [
+			'error',
+			{
+				VariableDeclarator: {
+					array: false,
+					object: true,
+				},
+				AssignmentExpression: {
+					array: true,
+					object: false,
+				},
+			},
+			{
+				enforceForRenamedProperties: false,
+			},
+		],
+
+		// use rest parameters instead of arguments
+		// https://eslint.org/docs/rules/prefer-rest-params
+		'prefer-rest-params': 'error',
+
+		// suggest using the spread syntax instead of .apply()
+		// https://eslint.org/docs/rules/prefer-spread
+		'prefer-spread': 'error',
+
 		// disallow parseInt() in favor of binary, octal, and hexadecimal literals
 		// http://eslint.org/docs/rules/prefer-numeric-literals
-		'prefer-numeric-literals': 'off',
+		'prefer-numeric-literals': 'error',
 
 		// suggest using Reflect methods where applicable
 		// http://eslint.org/docs/rules/prefer-reflect
 		'prefer-reflect': 'off',
 
-		// use rest parameters instead of arguments
-		// http://eslint.org/docs/rules/prefer-rest-params
-		'prefer-rest-params': 'error',
-
-		// suggest using the spread operator instead of .apply()
-		// http://eslint.org/docs/rules/prefer-spread
-		'prefer-spread': 'error',
-
-		// suggest using template literals instead of string concatenation
-		// http://eslint.org/docs/rules/prefer-template
-		'prefer-template': 'error',
-
-		// disallow generator functions that do not have yield
-		// http://eslint.org/docs/rules/require-yield
-		'require-yield': 'error',
-
-		// enforce spacing between object rest-spread
-		// http://eslint.org/docs/rules/rest-spread-spacing
-		'rest-spread-spacing': ['error', 'never'],
-
 		// import sorting
 		// http://eslint.org/docs/rules/sort-imports
 		'sort-imports': ['off', {
-			ignoreCase: false,
+			ignoreCase: false, // To group classes separately
+			ignoreDeclarationSort: false,
 			ignoreMemberSort: false,
 			memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
 		}],
@@ -147,5 +169,17 @@ module.exports = {
 		// enforce spacing around the * in yield* expressions
 		// http://eslint.org/docs/rules/yield-star-spacing
 		'yield-star-spacing': ['error', 'after'],
+
+		// suggest using template literals instead of string concatenation
+		// https://eslint.org/docs/rules/prefer-template
+		'prefer-template': 'error',
+
+		// disallow generator functions that do not have yield
+		// https://eslint.org/docs/rules/require-yield
+		'require-yield': 'error',
+
+		// enforce spacing between object rest-spread
+		// https://eslint.org/docs/rules/rest-spread-spacing
+		'rest-spread-spacing': ['error', 'never'],
 	},
 };

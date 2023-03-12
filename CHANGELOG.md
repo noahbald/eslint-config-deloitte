@@ -1,5 +1,113 @@
 ## Changelog for Deloitte Digital's ESLint Config
 
+### [next]
+
+- Configuration updates
+	- Updated default node version to lts/gallium (v16.19.0)
+	- Updated node minimum to v12
+	- Upgraded ESLint to version 8.35.1
+	- Upgraded eslint-plugin-import to version 2.27.5
+	- Upgraded eslint-plugin-new-with-error to version 3.1.0
+	- Upgraded eslint-plugin-jsx-a11y to version 6.7.1
+	- Upgraded eslint-plugin-react to version 7.32.2
+	- Added new eslint-plugin-react-hooks
+	- Upgraded @typescript-eslint/eslint-plugin to version 5.54.0
+	- Upgraded @typescript-eslint/parser to version 5.54.0
+	- Updated resolvers and extensions for /imports
+- Updated rules to match Deloitte's internal guidelines
+	- best-practices
+		- Set `no-bitwise` to warn
+		- Set `camelcase` to check destructuring
+		- Set `wrap-iife` to `inside`
+		- Set `no-plusplus` to check loop afterthought
+		- Moved `no-undef` to /variables
+		- Moved `no-unused-vars` to /variables
+		- Set `space-before-function-paren` to check for space before anonymous
+		- Set `quote-props` to `consistent-as-needed`
+		- Set `key-spacing` to use `mode-strict`
+		- Set `space-unary-ops` to space words
+		- Set `yoda` to except ranges
+		- Enabled `one-var`
+		- Set `dot-notation` to allow keywords
+		- Set `indent` to use tabs on switch case
+	- es6
+		- Enabled `arrow-body-style`
+		- Set `arrow-parens` to `always`
+		- Enabled `no-restricted-imports`
+		- Enabled `object-shorthand`
+		- Enabled `prefer-numeric-literals`
+		- Enabled `prefer-template`
+	- imports
+		- Enabled `import/no-unresolved`
+		- Enabled `import/named`
+		- Disabled `import/imports-first`; deprecated
+		- Enabled `import/no-namespace`
+		- Enabled `import/extensions`
+		- Enabled `import/order`
+		- Enabled `import/max-dependencies` to `warn`
+		- Enabled `import/no-absolute-path`
+	- react/jsx-a11y
+		- Disabled `jsx-a11y/accessible-emoji`; deprecated
+		- Enabled `jsx-a11y/anchor-has-content`
+		- Enabled `jsx-a11y/aria-activedescendant-has-tabindex`
+		- Set `jsx-a11y/aria-role` to ignore non-DOM
+		- Set `jsx-a11y/html-has-lang` to `error`
+		- Enabled `jsx-a11y/interactive-supports-focus`
+		- Set `jsx-a11y/media-has-caption` to `error`
+		- Enabled `jsx-a11y/mouse-events-have-key-events`
+		- Enabled `jsx-a11y/no-autofocus`
+		- Enabled `jsx-a11y/tabindex-no-positive`
+		- Disabled `jsx-a11y/label-has-for`; replaced with `jsx-a11y/label-has-associated-control`
+		- Enabled `jsx-a11y/anchor-is-valid` to `warn`
+	- react/react
+		- Set `react/display-name` to `warn`
+		- Enabled `react/forbid-prop-types`
+		- Enabled `react/no-danger` to `warn`
+		- Set `react/no-deprecated` to `error`
+		- Disabled `react/no-multi-comp`
+		- Enabled `react/prefer-stateless-function`
+		- Set `react/require-default-props` to `forbidDefaultForRequired`
+		- Set `react/self-closing-comp` to `error`
+		- Updated orders for `react/sort-comp`
+		- Set `react/jsx-boolean-value` to `error`
+		- Set `react/jsx-closing-bracket-location` to `line-aligned`
+		- Set `react/jsx-filename-extension` to `error` and set extensions to `.jsx`
+		- Disabled `react/jsx-handler-names`
+		- Set `react/jsx-no-bind` to `error` and ignoreDOMComponents
+		- Set `react/jsx-no-duplicate-props` to ignore case
+		- Set `react/jsx-no-target-blank` to `error`
+		- Set `react/jsx-no-undef` to `error`
+		- Set `react/jsx-tag-spacing` to error on space before closing
+		- Set `react/jsx-wrap-multilines` to include condition, logical, and prop
+		- Enabled `react/jsx-curly-brace-presence`
+		- Enabled `react/destructuring-assignment`
+		- Set `react/no-access-state-in-setstate` to `error`
+		- Set `react/button-has-type` to forbid `reset`
+		- Disabled `react/jsx-child-element-spacing`
+- Added various rules to match Deloitte's internal guidelines
+	- best-practices (see git history)
+	- Created /errors
+	- es6 (see git history)
+	- imports (see git history)
+	- Created /node
+	- Created /strict
+	- Created /style
+	- Created /variables
+	- react/jsx-a11y (see git history)
+	- react/react (see git history)
+	- typescript/typescript
+		- Disabled more rules in overrides
+		- Added naming convention
+- Updated packages to extend base recommendations
+	- eslint-config extends `eslint:recommended`
+	- react/jsx-a11y extends `jsx-a11y/recommended`
+	- react extends `react/recommended`
+	- react extends `react-hooks/recommended`
+	- typescript extends `@typescript-eslint/recommended
+	- typescript extends `@typescript-eslint/recommended-type-checking
+	- typescript doesn't extend `@typescript-eslint/strict`, but is included commented out to be enabled per-project
+
+
 ### [3.4.1]
 
 - Enforce `async () => {}` instead of `async() => {}`.
